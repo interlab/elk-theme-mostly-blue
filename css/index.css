@@ -145,13 +145,13 @@ a img {
 /* in particular not for Internet Explorer. They can live with it. */
 /*
 	.button_submit - covers input[type=submit], input[type=button],
-	                 button[type=submit] and button[type=button]
-	.linkbutton    - covers links, to make them look like a submit button.
+						  button[type=submit] and button[type=button]
+	.linkbutton	 - covers links, to make them look like a submit button.
 	.button_reset  - covers input[type=reset] and button[type=reset]
-	.input_check   - covers input[type=checkbox]
-	.input_radio   - covers input[type=radio]
-	.input_text    - covers input[type=text]
-	.input_file    - covers input[type=file]
+	.input_check	- covers input[type=checkbox]
+	.input_radio	- covers input[type=radio]
+	.input_text	 - covers input[type=text]
+	.input_file	 - covers input[type=file]
 */
 input, button, select, textarea, .editor {
 	font: 87.5%/150% "Segoe UI", "Helvetica Neue", "Liberation Sans", "Nimbus Sans L", "Trebuchet MS", Arial, sans-serif;
@@ -183,6 +183,10 @@ input, .input_text, button, select {
 }
 select {
 	padding: 0 0 0 2px;
+	max-width: 95%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .input_text {
 	font-size: .876em;
@@ -194,6 +198,10 @@ select option {
 select#cat, select#suggestions, select#file , input[type="file"] {
 	height: auto;
 	max-height: none;
+}
+.select_multiple {
+	min-height: 10em;
+	height: auto;
 }
 input[type="number"] {
 	padding: 0 0 0 6px;
@@ -208,9 +216,9 @@ input[type="number"] {
 
 /* Common button styling. */
 /* It is being replaced with three classes: */
-/*    .button_submit is not floated */
-/*    .right_submit is right floated */
-/*    .left_submit is left floated */
+/*	 .button_submit is not floated */
+/*	 .right_submit is right floated */
+/*	 .left_submit is left floated */
 /* The button_reset class may need attention too. */
 .button_submit, .right_submit, .left_submit, .button_reset,
 /* Anchors styled to look like buttons. */
@@ -692,13 +700,20 @@ div.windowbg, div.windowbg2 {
 	color: inherit;
 	font: inherit;
 	vertical-align: top;
-	padding: 0 1em 0 0;
+	padding: 0 0.5em;
 }
 .bbc_table th {
 	color: inherit;
 	font: inherit;
 	font-weight: bold;
-	padding: 0 1em 0 0;
+	padding: 0 0.5em;
+}
+/* Styling for bbc tables inside posts */
+.inner > .bbc_table_container > .bbc_table {
+	border-collapse: collapse;
+}
+.inner > .bbc_table_container > .bbc_table th {
+	text-align: center;
 }
 .bbc_u {
 	text-decoration: underline;
@@ -809,21 +824,20 @@ a.bbc_link {
 }
 /* The main title. */
 #forumtitle, .rightheader #forumtitle {
-	float: left;
 	padding: 10px 10px 6px 13px;
 	font-size: 2.357em;
 	line-height: 1.455em;
 }
-.centerheader #forumtitle {
+.centerheader .forumlink {
 	display: none;
 }
-.rightheader #forumtitle {
+.rightheader #forumtitle .forumlink {
 	float: right;
 }
 /* Float these items to the right. @todo - Simplify. */
 #logobox, .rightheader #logobox {
 	float: right;
-	padding: 0.95em 12px 0 12px;
+	padding: 0 12px 0 12px;
 	max-width: 40%;
 }
 .centerheader #logobox {
@@ -841,6 +855,8 @@ a.bbc_link {
 }
 #siteslogan {
 	clear: both;
+	font-size: 0.65em;
+	display: block;
 }
 /* Tweak the logo */
 #logo {
@@ -1015,14 +1031,14 @@ a.bbc_link {
 .listlevel2, .listlevel3 {
 	position: relative;
 	float: none;
-	padding: 1px 0;
+	padding: 0;
 	width: 17em;
 }
 /* Levels 2 and 3 drop menus: link or button. */
 .linklevel2, .linklevel3 {
 	position: relative;
 	display: block;
-	padding: 0 7px;
+	padding: 1px 7px;
 }
 /* @todo - Note: The next declarations are for keyboard access with js disabled. */
 /* Hmm. These are tricky with the new Superfish/Superclick combo. */
@@ -1112,6 +1128,10 @@ a.bbc_link {
 	border: none;
 	white-space: nowrap;
 }
+.linktree:first-child a {
+	height: 2em;
+	padding: 0 6px;
+}
 .linktree:last-child {
 	max-width: 25em;
 }
@@ -1183,6 +1203,9 @@ a.bbc_link {
 	font-size: 0.786em;
 	line-height: 2em;
 }
+.fa.hamburger_30 {
+	display: none;
+}
 
 /* The quick buttons. */
 /* ------------------------------------------------------- */
@@ -1215,12 +1238,12 @@ a.bbc_link {
 	padding: 0 0 0 6px;
 }
 .quickbuttons .inline_mod_check {
-    margin: 4px 0 0;
-    padding: 0 4px;
+	 margin: 4px 0 0;
+	 padding: 0 4px;
 }
 .inline_mod_check .input_check {
-    height: auto;
-    margin: 0 0 2px;
+	 height: auto;
+	 margin: 0 0 2px;
 }
 
 /* @todo - Save code by amalgamating common button background declarations. */
@@ -1314,7 +1337,7 @@ a.bbc_link {
 .like_button:before, .likes_button:before, .unlike_button:before {
 	background-position: 0 -480px;
 }
-.unlike_button:hover:before {
+.unlike_button:before {
 	background-position: 0 -408px;
 }
 .like_button:hover:before {
@@ -1353,9 +1376,10 @@ a.bbc_link {
 /* Necessary for some browsers to keep the pages all on the same line */
 .linavPages {
 	float: left;
+	margin: 0px 4px 0px 0px;
 }
 .selectbox, .pagelinks {
-	margin: 5px 0 0 0;
+	margin: 5px 5px 0px;
 	font-size: 0.857em;
 }
 /* @todo - Styling will need a bit more thought here. */
@@ -1566,7 +1590,7 @@ dl.settings dd {
 	width: 55%;
 	min-height: 2em;
 }
-/* I'm a tad leary of these setting new margins, but this line is here to compress     */
+/* I'm a tad leary of these setting new margins, but this line is here to compress	  */
 /* listings in fieldset, like a permissions radio listing, from taking up excess space */
 .settings dd>fieldset dd, .settings dd>fieldset dt {
 	margin: 0;
@@ -1637,7 +1661,7 @@ dl.settings label {
 	float: left;
 }
 .board_name {
-	padding: 0 0 1px 0;
+	padding: 0 0 1px 56px;
 	font-size: 1.143em;
 }
 .board_info .board_description, .board_info .moderators {
@@ -3397,24 +3421,24 @@ div.labels {
 }
 /* See, I told you there was wombatz here. */
 /*
-			   ,.--""""--.._
-			 ."     .'      `-.
-			;      ;           ;
-		   '      ;             )
-		  /     '             . ;
-		 /     ;     `.        `;
-	   ,.'     :         .     : )
-	   ;|\'    :      `./|) \  ;/
-	   ;| \"  -,-   "-./ |;  ).;
-	   /\/              \/   );
-	  :     _            \    ;
-	  :    \0\_    _     ;   )
-	  `.          /o/    ;  /
-		!    :   :     ,/  ;
-		 (`. : _ : ,/""   ;
-		  \\\`"^" ` :    ;
-				   (    )
-	 akg           ////
+				,.--""""--.._
+			 ."	  .'		`-.
+			;		;			  ;
+			'		;				 )
+		  /	  '				 . ;
+		 /	  ;	  `.		  `;
+		,.'	  :			.	  : )
+		;|\'	 :		`./|) \  ;/
+		;| \"  -,-	"-./ |;  ).;
+		/\/				  \/	);
+	  :	  _				\	 ;
+	  :	 \0\_	 _	  ;	)
+	  `.			 /o/	 ;  /
+		!	 :	:	  ,/  ;
+		 (`. : _ : ,/""	;
+		  \\\`"^" ` :	 ;
+					(	 )
+	 akg			  ////
 */
 
 
@@ -3831,6 +3855,7 @@ dl.no_members {
 	position: absolute;
 	display: none;
 	padding: 0.5em;
+	max-width: 12em;
 }
 #mlsearch_options.nojs {
 	display: none;
@@ -3848,6 +3873,7 @@ dl.no_members {
 }
 #mlsearch_options .mlsearch_option {
 	padding: 0.2em 0;
+	line-height: 2em;
 }
 
 
@@ -4219,7 +4245,7 @@ dl.no_members {
 		min-width: 20em;
 	}
 	.board_name {
-		margin: 12px 0 0 56px;
+		margin: 12px 0 0;
 	}
 	.board_lastposter {
 		display: block;
@@ -4528,7 +4554,8 @@ dl.no_members {
 		word-wrap: break-word;
 	}
 	.board_name {
-		margin: 0 0 0 35px;
+		margin: 0;
+		padding: 0 0 1px 35px;
 	}
 	.board_info:after {
 		display: block;
@@ -4650,10 +4677,10 @@ dl.no_members {
 	.forumposts .windowbg, .forumposts .windowbg2 {
 		margin-bottom: 6px;
 	}
-	#moderationbuttons, a.linklevel1.button_strip_notify,
+	a.linklevel1.button_strip_notify,
 	a.linklevel1.button_strip_print, a.linklevel1.button_strip_send, .inline_mod_check,
 	a.linklevel1.quotetonew_button, a.linklevel1.button_strip_post_poll,
-	a.linklevel1.post_options, .keyinfo .post_subject, li.listlevel1.quickmod_select_all,
+	.keyinfo .post_subject, li.listlevel1.quickmod_select_all,
 	#collapse_button, p.inline.membergroups {
 		display: none !important;
 	}
@@ -4752,7 +4779,7 @@ dl.no_members {
 /* This one does 480px screens at default font size. */
 @media screen and (max-width: 30em) {
 	.content {
-	    padding: 0.1em 0.1em;
+		 padding: 0.1em 0.1em;
 	}
 	.listlevel2, .listlevel3 {
 		max-width: 12em !important;
@@ -4793,5 +4820,28 @@ dl.no_members {
 	#confirm_buttons .button_submit {
 		height: inherit;
 		max-height: none;
+	}
+	.fa.hamburger_30 {
+		padding-top: 0.1em;
+		display: inline-block;
+		vertical-align: middle;
+		cursor: pointer;
+	}
+	.fa.hamburger_30:before {
+		margin: 0.2em;
+	}
+	#display_jump_to {
+		display: inline-block;
+	}
+	.hide_30.hamburger_30_target {
+		left: -9999px;
+		position: absolute;
+	}
+	.fa.hamburger_30.visible {
+		display: none;
+	}
+	.hide_30.hamburger_30_target.visible {
+		left: auto;
+		position: relative;
 	}
 }

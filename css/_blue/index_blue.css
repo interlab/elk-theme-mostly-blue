@@ -67,12 +67,7 @@ html {
 	
 }
 body {
-	/*
-	background: #555;
-	background-image: linear-gradient(to right, #333 0%, #888 50%, #333 100%);
-	color: #666;
-	*/
-	background: url(../../images/_blue/bg.jpg);
+	 background-color: #E5E5E5;
 }
 fieldset {
 	background: transparent;
@@ -84,7 +79,7 @@ fieldset {
 	margin: 5px 0;
 }
 legend {
-	background: url(../../images/selected_open.png) no-repeat scroll left center transparent;
+	background: url(../../images/selected_open.png) 0 50% no-repeat;
 	cursor: pointer;
 	padding: 0 0 2px 20px;
 	color: #333;
@@ -92,7 +87,7 @@ legend {
 	margin-left: 15px;
 }
 .collapsed legend {
-	background: url(../../images/selected.png) no-repeat scroll left center transparent;
+	background: url(../../images/selected.png) 0 50% no-repeat;
 }
 
 input, button, select, textarea, .editor {
@@ -125,9 +120,9 @@ input[disabled].input_text, input[disabled].input_password {
 
 /* Common button styling. */
 /* It is being replaced with three classes: */
-/*    .button_submit is not floated */
-/*    .right_submit is right floated */
-/*    .left_submit is left floated */
+/*	 .button_submit is not floated */
+/*	 .right_submit is right floated */
+/*	 .left_submit is left floated */
 /* The button_reset class may need attention too. */
 .button_submit, .right_submit, .left_submit, .button_reset, .drop_area_fileselect_text,
 /* Anchors styled to look like buttons. */
@@ -356,6 +351,20 @@ strong {
 	box-shadow: 0 -1px 0 #66aa55 inset;
 	text-decoration: none;
 }
+/* Styling for tables inside posts */
+.inner > .bbc_table_container > .bbc_table td {
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+.inner > .bbc_table_container > .bbc_table th {
+	border-bottom: 1px solid #bbb;
+	border-right: 1px solid #ccc;
+}
+.inner > .bbc_table_container > .bbc_table td:last-child,
+.inner > .bbc_table_container > .bbc_table th:last-child  {
+	border-right: none;
+}
+
 /* /me uses this a lot. (emote, try typing /me in a post.) */
 .meaction {
 	color: #50aa3a;
@@ -903,7 +912,6 @@ div.bbc_footnotes .meaction{
 	border-bottom: none;
 	border-radius: 0 20px 0 0;
 	background: #eee;
-	color: #eee;
 	opacity: 0.2;
 }
 #gobottom {
@@ -966,9 +974,9 @@ div.bbc_footnotes .meaction{
 /*	$BOARDS		*/
 /* ------------------------------------------------------- */
 /* Set up some general framing classes. @todo */
-/*    .forum_category for board index/sub-boards. */
-/*    .forumposts for thread pages and recent posts, etc. */
-/*    .content_category for general divisions around the place. */
+/*	 .forum_category for board index/sub-boards. */
+/*	 .forumposts for thread pages and recent posts, etc. */
+/*	 .content_category for general divisions around the place. */
 /* All styled the same in default variant, but available for fun and games. */
 
 /* The board categories and newsfader - some shared styling. */
@@ -1763,14 +1771,9 @@ div.bbc_footnotes .meaction{
 
 /* Test code - an attempt to make recent posts less overwhelming. */
 #recentposts .inner {
-	height: 7.2em;
-	overflow: hidden;
-	resize: vertical;
+	max-height: 20em;
+	overflow: auto;
 	position: relative;
-}
-#recentposts .inner blockquote {
-	height: 1.5em;
-	overflow: hidden;
 }
 
 /* floating error box */

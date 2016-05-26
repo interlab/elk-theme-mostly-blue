@@ -11,7 +11,7 @@
  * copyright:	2011 Simple Machines (http://www.simplemachines.org)
  * license:  	BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.0.3
+ * @version 1.0.6
  *
  */
 
@@ -165,7 +165,6 @@ function template_html_above()
 
 	// Show all the relative links, such as help, search, contents, and the like.
 	echo '
-	<link rel="shortcut icon" sizes="196x196" href="' . $settings['images_url'] . '/mobile.png" />
 	<link rel="help" href="', $scripturl, '?action=help" />
 	<link rel="contents" href="', $scripturl, '" />', ($context['allow_search'] ? '
 	<link rel="search" href="' . $scripturl . '?action=search" />' : '');
@@ -234,14 +233,14 @@ function template_body_above()
 		</div>
 		<div id="header" class="wrapper', !empty($settings['header_layout']) ? ($settings['header_layout'] == 1 ? ' centerheader' : ' rightheader') : '', '"', empty($context['minmax_preferences']['upshrink']) ? '' : ' style="display: none;" aria-hidden="true"', '>
 			<h1 id="forumtitle">
-				<a href="', $scripturl, '">', $context['forum_name'], '</a>
-			</h1>';
+				<a class="forumlink" href="', $scripturl, '">', $context['forum_name'], '</a>';
 
 	echo '
-			<div id="logobox">
-				<img id="logo" src="', $context['header_logo_url_html_safe'], '" alt="', $context['forum_name_html_safe'], '" title="', $context['forum_name_html_safe'], '" />', empty($settings['site_slogan']) ? '' : '
-				<div id="siteslogan">' . $settings['site_slogan'] . '</div>', '
-			</div>';
+				<span id="logobox">
+					<img id="logo" src="', $context['header_logo_url_html_safe'], '" alt="', $context['forum_name_html_safe'], '" title="', $context['forum_name_html_safe'], '" />', empty($settings['site_slogan']) ? '' : '
+					<span id="siteslogan">' . $settings['site_slogan'] . '</span>', '
+				</span>
+			</h1>';
 
 	// Show the menu here, according to the menu sub template.
 	echo '
@@ -460,7 +459,7 @@ function theme_linktree($default = 'linktree')
 
 	// Each tree item has a URL and name. Some may have extra_before and extra_after.
 	// Added a linktree class to make targeting dividers easy.
-	foreach ($context[$default] as $tree)
+	foreach ($context[$default] as $pos => $tree)
 	{
 		echo '
 					<li class="linktree">
@@ -472,7 +471,7 @@ function theme_linktree($default = 'linktree')
 			echo $tree['extra_before'];
 
 		// Show the link, including a URL if it should have one.
-		echo $settings['linktree_link'] && isset($tree['url']) ? '<a href="' . $tree['url'] . '">' . $tree['name'] . '</a>' : $tree['name'];
+		echo $settings['linktree_link'] && isset($tree['url']) ? '<a href="' . $tree['url'] . '">' . ($pos == 0 ? '<i class="fa fa-home fa-lg"></i>' : $tree['name']) . '</a>' : $tree['name'];
 
 		// Show something after the link...?
 		if (isset($tree['extra_after']))
