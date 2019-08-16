@@ -1096,27 +1096,27 @@ div.bbc_footnotes .meaction {
 }
 
 .topic_name h4 a {
-	color: #3D6E32;
+	color: #346;
 }
 
 .sticky_row .topic_name h4 a, .locked_row.sticky_row .topic_name h4 a {
-	color: #585858;
+	color: #555;
 }
 
 .locked_row .topic_name h4 a {
-	color: #686868;
+	color: #777;
 }
 
 .sticky_row .topic_name h4 a.new_posts, .locked_row.sticky_row .topic_name h4 a.new_posts, .locked_row .topic_name h4 a.new_posts {
-	color: #FEFEFE;
+	color: #fff;
 }
 
 .topic_stats {
-	color: #686868;
+	color: #777;
 }
 
 .qaction_row {
-	background: #FEFEFE;
+	background: #fff;
 }
 
 .approvetopic_row, .approve_row {
