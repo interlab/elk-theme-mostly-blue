@@ -419,7 +419,8 @@ function template_body_below()
 		<div class="wrapper">
 			<ul>
 				<li class="copyright">',
-					theme_copyright(), '
+					theme_copyright(),
+                    ' | <a href="http://www.jpr62.com/theme/" target="_blank" class="new_win">Mostly Blue by, Crip</a>
 				</li>',
 				!empty($context['newsfeed_urls']['rss']) ? '<li>
 					<a id="button_rss" href="' . $context['newsfeed_urls']['rss'] . '" class="rssfeeds new_win"><i class="icon icon-margin i-rss icon-big"><s>' . $txt['rss'] . '</s></i></a>
