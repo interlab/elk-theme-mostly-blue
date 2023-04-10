@@ -54,6 +54,10 @@ a.new_win:link, a.new_win:visited {
     text-decoration: none;
 }
 
+h2.category_header a {
+    color: #fff;
+}
+
 /* Cursor declared here.Should not be required anywhere else. */
 a:hover, a.new_win:hover {
     text-decoration: underline;
@@ -67,8 +71,9 @@ html {
 }
 
 body {
-	 background-color: #E5E5E5;
-	color: #585858;
+	background-color: #E5E5E5;
+	/*color: #585858;*/
+	color: #000;
 }
 
 fieldset {
@@ -897,7 +902,7 @@ div.bbc_footnotes .meaction {
 #gotop, #gobottom {
 	border-color: #222222;
 	background: #EEEEEE;
-	color: #EEEEEE;
+	color: #020202;
 	opacity: 0.2;
 }
 
@@ -1062,7 +1067,8 @@ div.bbc_footnotes .meaction {
 #description_board .generalinfo, #forumposts .generalinfo {
 	border-color: #DDDDDD;
 	border-bottom-color: #CCCCCC;
-	background: #FEFEFE;
+	/*background: #FEFEFE;*/
+	background: #FFF;
 }
 
 .topic_listing {
